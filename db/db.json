@@ -1,0 +1,77 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "nama": "Hasantosa",
+            "alamat": "Yogyakarta",
+            "umur": 31
+        },
+        {
+            "id": 2,
+            "nama": "Hendra",
+            "alamat": "Yogyakarta",
+            "umur": 21
+        },
+        {
+            "id": 3,
+            "nama": "Nuri",
+            "alamat": "Yogyakarta",
+            "umur": 24
+        },
+        {
+            "id": 4,
+            "nama": "Lestari",
+            "alamat": "Sumbawa",
+            "umur": 33
+        },
+        {
+            "id": 5,
+            "nama": "Heri",
+            "alamat": "Manado",
+            "umur": 23
+        },
+        {
+            "id": 6,
+            "nama": "Lias",
+            "alamat": "Cilacap",
+            "umur": 24
+        },
+        {
+            "id": 7,
+            "nama": "Lina",
+            "alamat": "Semarang",
+            "umur": 19
+        },
+        {
+            "id": 8,
+            "nama": "Jacky",
+            "alamat": "Jakarta",
+            "umur": 44
+        },
+        {
+            "id": 9,
+            "nama": "Ninda",
+            "alamat": "Riau",
+            "umur": 26
+        },
+        {
+            "id": 10,
+            "nama": "Nisa",
+            "alamat": "Pekalongan",
+            "umur": 24
+        },
+        {
+            "id": 11,
+            "nama": "Danang",
+            "alamat": "Wonosari",
+            "umur": 24
+        },
+        {
+            "id": 12,
+            "nama": "Emanuel",
+            "alamat": "Kalimantan",
+            "umur": 24
+        }
+    ]
+
+}
