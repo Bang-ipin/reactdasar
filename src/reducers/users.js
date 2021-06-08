@@ -1,10 +1,23 @@
+import { GET_USERS_LIST } from "../actions/userActions";
+
 let initialState = {
+  getUsersList:false,
+  errorUsersList:false,
   title: "Zafpedia Academy",
-  error:false,
 };
 
 const users = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case GET_USERS_LIST:
+      return{
+        ...state,
+        getUsersList:action.payload.data,
+        errorUsersList: action.payload.errorMessage,
+      };
+  
+    default:
+    return state;
+  }
 };
 
 export default users;
