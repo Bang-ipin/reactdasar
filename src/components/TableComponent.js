@@ -12,6 +12,7 @@ import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Spinner } from "reactstrap";
 
 const { SearchBar } = Search;
 const columns = [
@@ -113,7 +114,11 @@ const TableComponent = (props) => {
             </div>
           )}
         </ToolkitProvider>
-      ) : null}
+      ) : (
+        <div className="text-center">
+          {props.errorUsersList ? <h4> {props.errorUsersList} </h4> :  <Spinner color="dark" /> }
+        </div>
+      )}
     </Container>
   );
 };

@@ -8,25 +8,16 @@ import EditUser from "./Pages/EditUser";
 import DetailUser from "./Pages/DetailUser";
 
 export default class App extends Component {
-
   render() {
     return (
       <div>
         <NavbarComponent />
         <JumbotronComponent />
         <BrowserRouter>
-          <Route path="/" exact>
-            <Home/>
-          </Route>
-          <Route path="/create" exact>
-            <CreateUser />
-          </Route>
-          <Route path="/edit/:id" exact>
-            <EditUser />
-          </Route>
-          <Route path="/detail/:id" exact>
-            <DetailUser />
-          </Route>
+          <Route path="/" exact component={Home} />
+          <Route path="/create" exact component={CreateUser} />
+          <Route path="/edit/:id" exact component={EditUser} />
+          <Route path="/detail/:id" exact component={DetailUser} />
         </BrowserRouter>
       </div>
     );
