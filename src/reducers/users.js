@@ -1,10 +1,17 @@
-import { GET_USERS_LIST, GET_USER_DETAIL } from "../actions/userActions";
+import {
+  GET_USERS_LIST,
+  GET_USER_DETAIL,
+  POST_USER_CREATE,
+  PUT_USER_EDIT,
+} from "../actions/userActions";
 
 let initialState = {
   getUsersList: false,
   errorUsersList: false,
   getUserDetail: false,
   errorUserDetail: false,
+  getResponDataUser: false,
+  errorResponDataUser: false,
   title: "Zafpedia Academy",
 };
 
@@ -23,6 +30,21 @@ const users = (state = initialState, action) => {
         getUserDetail: action.payload.data,
         errorUserDetail: action.payload.errorMessage,
       };
+
+    case POST_USER_CREATE:
+      return {
+        ...state,
+        getResponDataUser: action.payload.data,
+        errorResponDataUser: action.payload.errorMessage,
+      };
+
+    case PUT_USER_EDIT:
+      return {
+        ...state,
+        getResponDataUser: action.payload.data,
+        errorResponDataUser: action.payload.errorMessage,
+      };
+
     default:
       return state;
   }

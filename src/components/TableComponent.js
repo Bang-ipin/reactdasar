@@ -13,53 +13,28 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Spinner } from "reactstrap";
+import swal from "sweetalert";
+import { deleteUser } from "../actions/userActions";
 
 const { SearchBar } = Search;
-const columns = [
-  {
-    dataField: "id",
-    text: "ID",
-    sort: true,
-    headerStyle: () => {
-      return { width: "5%" };
-    },
-  },
-  {
-    dataField: "nama",
-    text: "Name",
-    sort: true,
-  },
-  {
-    dataField: "alamat",
-    text: "Alamat",
-    sort: true,
-  },
-  {
-    dataField: "link",
-    text: "Action",
-    formatter: (rowcontent, row) => {
-      return (
-        <div>
-          <Link to={"detail/" + row.id}>
-            <Button color="dark" className="mr-2">
-              <FontAwesomeIcon icon={faInfo} /> Detail
-            </Button>
-          </Link>
-          <Link to={"edit/" + row.id}>
-            <Button color="dark" className="mr-2">
-              <FontAwesomeIcon icon={faEdit} /> Edit
-            </Button>
-          </Link>
-          <Link to={"detail/" + row.id}>
-            <Button color="dark" className="mr-2">
-              <FontAwesomeIcon icon={faTrash} /> Delete
-            </Button>
-          </Link>
-        </div>
-      );
-    },
-  },
-];
+
+const handleClick = (dispatch, id) => {
+  swal({
+    title: "Kamu yakin akan menghapus data ini?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      dispatch(deleteUser(id));
+      swal("Data sukses dihapus!", {
+        icon: "success",
+      });
+    } else {
+      swal("Gagal menghapus data!");
+    }
+  });
+};
 
 const defaultSorted = [
   {
@@ -76,6 +51,54 @@ const mapStateToProps = (state) => {
 };
 
 const TableComponent = (props) => {
+  const columns = [
+    {
+      dataField: "id",
+      text: "ID",
+      sort: true,
+      headerStyle: () => {
+        return { width: "5%" };
+      },
+    },
+    {
+      dataField: "nama",
+      text: "Name",
+      sort: true,
+    },
+    {
+      dataField: "alamat",
+      text: "Alamat",
+      sort: true,
+    },
+    {
+      dataField: "link",
+      text: "Action",
+      formatter: (rowcontent, row) => {
+        return (
+          <div>
+            <Link to={"detail/" + row.id}>
+              <Button color="dark" className="mr-2">
+                <FontAwesomeIcon icon={faInfo} /> Detail
+              </Button>
+            </Link>
+            <Link to={"edit/" + row.id}>
+              <Button color="dark" className="mr-2">
+                <FontAwesomeIcon icon={faEdit} /> Edit
+              </Button>
+            </Link>
+            <Button
+              color="dark"
+              className="mr-2"
+              onClick={() => handleClick(props.dispatch, row.id)}
+            >
+              <FontAwesomeIcon icon={faTrash} /> Delete
+            </Button>
+          </div>
+        );
+      },
+    },
+  ];
+
   return (
     <Container>
       {props.getUsersList ? (
@@ -116,7 +139,11 @@ const TableComponent = (props) => {
         </ToolkitProvider>
       ) : (
         <div className="text-center">
-          {props.errorUsersList ? <h4> {props.errorUsersList} </h4> :  <Spinner color="dark" /> }
+          {props.errorUsersList ? (
+            <h4> {props.errorUsersList} </h4>
+          ) : (
+            <Spinner color="dark" />
+          )}
         </div>
       )}
     </Container>
